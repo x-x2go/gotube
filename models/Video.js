@@ -23,9 +23,13 @@ const VideoSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Comment"
     }
-  ]
+  ],
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
 });
 // video들의 형태 정의
 
-const model = mongoose.model("video", VideoSchema);
+const model = mongoose.model("Video", VideoSchema);
 export default model;

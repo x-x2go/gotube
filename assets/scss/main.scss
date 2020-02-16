@@ -37,11 +37,11 @@ textarea,
 }
 button {
   border: none;
-  border-color: #3498db;
+  background-color: #3498db;
   color: white;
 }
 button.delete {
-  border-color: $dark-red;
+  background-color: $dark-red;
 }
 button,
 input[type="submit"] {
