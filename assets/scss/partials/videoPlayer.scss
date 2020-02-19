@@ -6,6 +6,7 @@
     }
   }
   video {
+    width: 100%;
     max-width: 100%;
   }
   .videoPlayer__controls {
@@ -16,7 +17,7 @@
     z-index: 9;
     bottom: 5px;
     width: 100%;
-    background-color: tgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
