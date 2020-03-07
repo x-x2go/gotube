@@ -48,12 +48,15 @@ export const githubLoginCallback = async (
     _json: { id, avater_url: avatarUrl, name, email }
   } = profile;
   try {
+    console.log(email);
     const user = await User.findOne({ email });
     if (user) {
+      console.log("I already have account");
       user.githubId = id;
       user.save();
       return cb(null, user);
     }
+    console.log("I`m new user");
     const newUser = await User.create({
       email,
       name,
@@ -81,30 +84,27 @@ export const kakaoLoginCallback = async (
     _json: {
       id,
       properties,
-      kakao_account: { profile: _profile }
+      kakao_account: { profile: _profile, has_email, email }
     }
   } = profile;
-  console.log(_profile);
   const name = properties.nickname;
   const avatarUrl = _profile.profile_image_url;
   try {
-    /* if (has_email) {
-      const email = _profile.email;
+    if (has_email) {
       const user = await User.findOne({ email });
       if (user) {
         user.kakaoId = id;
         user.save();
         return done(null, user);
-      }*/
-    const email = "falling@naver.com";
-    const newUser = await User.create({
-      email,
-      name,
-      kakaoId: id,
-      avatarUrl
-    });
-    return done(null, newUser);
-    // }
+      }
+      const newUser = await User.create({
+        email,
+        name,
+        kakaoId: id,
+        avatarUrl
+      });
+      return done(null, newUser);
+    }
   } catch (error) {
     return done(error);
   }
@@ -120,6 +120,7 @@ export const logout = (req, res) => {
 };
 
 export const getMe = (req, res) => {
+  console.log(req.user.avatarUrl);
   res.render("userDetail", { pageTitle: "User Detail", user: req.user });
 };
 
@@ -137,8 +138,9 @@ export const userDetail = async (req, res) => {
   }
 };
 
-export const getEditProfile = (req, res) =>
+export const getEditProfile = (req, res) => {
   res.render("editProfile", { pageTitle: "Edit Profile" });
+};
 
 export const postEditProfile = async (req, res) => {
   const {
