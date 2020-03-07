@@ -17,6 +17,7 @@ export const search = async (req, res) => {
     query: { term: searchingBy }
   } = req;
   let videos = [];
+
   try {
     videos = await Video.find({
       title: { $regex: searchingBy, $options: "i" }

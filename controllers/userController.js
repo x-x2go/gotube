@@ -70,6 +70,50 @@ export const postGithubLogin = (req, res) => {
   res.redirect(routes.home);
 };
 
+export const kakaoLogin = passport.authenticate("kakao");
+export const kakaoLoginCallback = async (
+  accessToken,
+  refreshToken,
+  profile,
+  done
+) => {
+  const {
+    _json: {
+      id,
+      properties,
+      kakao_account: { profile: _profile }
+    }
+  } = profile;
+  console.log(_profile);
+  const name = properties.nickname;
+  const avatarUrl = _profile.profile_image_url;
+  try {
+    /* if (has_email) {
+      const email = _profile.email;
+      const user = await User.findOne({ email });
+      if (user) {
+        user.kakaoId = id;
+        user.save();
+        return done(null, user);
+      }*/
+    const email = "falling@naver.com";
+    const newUser = await User.create({
+      email,
+      name,
+      kakaoId: id,
+      avatarUrl
+    });
+    return done(null, newUser);
+    // }
+  } catch (error) {
+    return done(error);
+  }
+};
+
+export const postKakaoLogin = (req, res) => {
+  res.redirect(routes.home);
+};
+
 export const logout = (req, res) => {
   req.logout();
   res.redirect(routes.home);
