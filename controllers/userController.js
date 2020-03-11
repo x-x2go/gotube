@@ -48,7 +48,6 @@ export const githubLoginCallback = async (
     _json: { id, avater_url: avatarUrl, name, email }
   } = profile;
   try {
-    console.log(email);
     const user = await User.findOne({ email });
     if (user) {
       console.log("I already have account");
@@ -90,21 +89,20 @@ export const kakaoLoginCallback = async (
   const name = properties.nickname;
   const avatarUrl = _profile.profile_image_url;
   try {
-    if (has_email) {
-      const user = await User.findOne({ email });
-      if (user) {
-        user.kakaoId = id;
-        user.save();
-        return done(null, user);
-      }
-      const newUser = await User.create({
-        email,
-        name,
-        kakaoId: id,
-        avatarUrl
-      });
-      return done(null, newUser);
+    if (!has_email) throw new "We need email"();
+    const user = await User.findOne({ email });
+    if (user) {
+      user.kakaoId = id;
+      user.save();
+      return done(null, user);
     }
+    const newUser = await User.create({
+      email,
+      name,
+      kakaoId: id,
+      avatarUrl
+    });
+    return done(null, newUser);
   } catch (error) {
     return done(error);
   }
