@@ -12,7 +12,7 @@
     align-items: center;
     .header__column {
       i {
-        color: white;
+        color: $black;
         font-size: 40px;
       }
       button {
@@ -27,15 +27,20 @@
       }
       &:nth-child(2) {
         justify-self: center;
+        img {
+          width: 70px;
+        }
       }
       &:last-child {
         justify-self: end;
+        font-family: "Bellota", cursive;
       }
       ul {
         display: flex;
-        color: white;
+        color: $black;
         font-weight: 600;
         text-transform: uppercase;
+        margin-top: 20px;
         li:not(:last-child) {
           margin-right: 15px;
         }
