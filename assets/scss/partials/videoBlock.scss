@@ -1,6 +1,6 @@
 .videoBlock {
   .video_box {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     max-width: 100%;
     position: relative;
     video {
@@ -24,13 +24,14 @@
     h6 {
       font-size: 16px;
       position: absolute;
-      left: 45%;
-      top: 50%;
+      left: 40%;
+      top: 45%;
       color: white;
     }
   }
   .videoBlock__title {
-    font-size: 18px;
+    font-family: "Roboto Slab", serif;
+    font-size: 16px;
     font-weight: 300;
     margin-bottom: 10px;
   }
