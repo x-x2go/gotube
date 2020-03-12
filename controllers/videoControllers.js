@@ -36,6 +36,7 @@ export const search = async (req, res) => {
 export const getUpload = (req, res) =>
   res.render("upload", { pageTitle: "Upload" });
 export const postUpload = async (req, res) => {
+  console.log(req);
   const {
     body: { title, description },
     file: { path }
@@ -73,24 +74,30 @@ export const getEditVideo = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id);
-    if (video.creator !== req.user.id) {
+    if (video.creator != req.user.id) {
       throw Error();
     } else {
       res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
     }
   } catch (error) {
+    console.log(error);
     res.redirect(routes.home);
   }
 };
 export const postEditVideo = async (req, res) => {
   const {
     params: { id },
-    body: { title, description }
+    body: { title, description },
+    file
   } = req;
   try {
-    await Video.findOneAndUpdate({ _id: id }, { title, description });
+    await Video.findOneAndUpdate(
+      { _id: id },
+      { title, description, thumbnail: file ? file.path : req.video.thumbnail }
+    );
     res.redirect(routes.videoDetail(id));
   } catch (error) {
+    console.log(error);
     res.redirect(routes.home);
   }
 };

@@ -7,6 +7,8 @@ mixin videoBlock(video = {})
                         h6.videoBlock__views 1 view
                     else
                         h6.videoBlock__views #{video.views} views
+                
+                img(src=video.thumbnail)
                 video.videoBlock__thumbnail(src=`${video.videoFile}`, controls=false)
             h4.videoBlock__title=video.title
             
