@@ -7,8 +7,10 @@
     width: 100%;
     max-width: 320px;
     margin-bottom: 50px;
+    text-align: center;
     input:not([type="file"]),
     .fileUpload {
+      font-family: "Bellota", cursive;
       display: block;
       width: 100%;
       padding-top: 10px;
