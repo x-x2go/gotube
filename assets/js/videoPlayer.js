@@ -1,11 +1,13 @@
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
+const playerControl = document.getElementById("jsPlayerControls");
 const playBtn = document.getElementById("jsPlayButton");
 const volumeBtn = document.getElementById("jsVolumeButton");
-const fullScreenBtn = document.getElementById("jsFullScreen");
 const currentTime = document.getElementById("currentTime");
+const fullScreenBtn = document.getElementById("jsFullScreen");
 const totalTime = document.getElementById("totalTime");
 const volumeRange = document.getElementById("jsVolume");
+const progressBar = document.getElementById("progressBar");
 
 const registerView = () => {
   const videoID = window.location.href.split("/videos/")[1];
@@ -83,8 +85,13 @@ const formatDate = seconds => {
   return `${hours}:${minutes}:${totalSeconds}`;
 };
 
+let progressTime = null;
 function getCurrentTime() {
   currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
+  progressTime = Math.floor(
+    (videoPlayer.currentTime / videoPlayer.duration) * 100
+  );
+  progressBar.value = `${progressTime}`;
 }
 
 function setTotalTime() {
@@ -113,6 +120,25 @@ function handleDrag(event) {
   }
 }
 
+let stoptime = null;
+function showCursor() {
+  clearTimeout(stoptime);
+  document.body.style.cursor = "default";
+  playerControl.style.opacity = 1;
+  stoptime = setTimeout(() => {
+    document.body.style.cursor = "none";
+    playerControl.style.opacity = 0;
+  }, 2000);
+}
+
+function spaceEvent() {
+  document.body.onkeyup = function(e) {
+    if (e.keyCode == 32) {
+      handlePlayClick();
+    }
+  };
+}
+
 function init() {
   videoPlayer.volume = 0.5;
   volumeBtn.innerHTML = '<i class="fas fa-volume-down"></i>';
@@ -122,6 +148,8 @@ function init() {
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
   volumeRange.addEventListener("input", handleDrag);
+  videoPlayer.addEventListener("mousemove", showCursor);
+  spaceEvent();
 }
 
 if (videoContainer) {
