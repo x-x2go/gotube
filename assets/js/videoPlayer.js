@@ -120,16 +120,16 @@ function handleDrag(event) {
   }
 }
 
-let stoptime;
-function showCursor() {
-  if (stoptime) clearTimeout(stoptime);
-  document.body.style.cursor = "default";
-  playerControl.style.opacity = 1;
-  stoptime = setTimeout(() => {
-    document.body.style.cursor = "none";
-    playerControl.style.opacity = 0;
-  }, 2000);
-}
+// let stoptime;
+// function showCursor() {
+//   if (stoptime) clearTimeout(stoptime);
+//   document.body.style.cursor = "default";
+//   playerControl.style.opacity = 1;
+//   stoptime = setTimeout(() => {
+//     document.body.style.cursor = "none";
+//     playerControl.style.opacity = 0;
+//   }, 2000);
+// }
 
 function spaceEvent() {
   document.body.onkeyup = function(e) {
@@ -148,7 +148,7 @@ function init() {
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
   volumeRange.addEventListener("input", handleDrag);
-  videoPlayer.addEventListener("mousemove", showCursor);
+  //videoPlayer.addEventListener("mousemove", showCursor);
   spaceEvent();
 }
 
