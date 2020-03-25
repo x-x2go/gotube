@@ -120,9 +120,9 @@ function handleDrag(event) {
   }
 }
 
-let stoptime = null;
+let stoptime;
 function showCursor() {
-  clearTimeout(stoptime);
+  if (stoptime) clearTimeout(stoptime);
   document.body.style.cursor = "default";
   playerControl.style.opacity = 1;
   stoptime = setTimeout(() => {
