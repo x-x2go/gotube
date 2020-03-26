@@ -49,7 +49,6 @@
     "build:server": "babel src --out-dir build",
     "copyAll": "shx cp -r src/static build/static && shx cp -r src/views build/views && shx cp -r src/uploads build/uploads",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
-    "prebuild": "shx rm -r build",
     "tunnel": "ngrok http 4000",
     "start": "node build/init.js"
   },
