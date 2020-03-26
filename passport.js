@@ -1,6 +1,7 @@
 import passport from "passport";
 import GithubStrategy from "passport-github";
 import KakaoStrategy from "passport-kakao";
+// import GoogleStrategy from "passport-google-oauth2";
 import User from "./models/User";
 import {
   githubLoginCallback,
@@ -30,6 +31,18 @@ passport.use(
     kakaoLoginCallback
   )
 );
+
+// passport.use(
+//   new GoogleStrategy(
+//     {
+//       clientID: GOOGLE_CLIENT_ID,
+//       clientSecret: GOOGLE_CLIENT_SECRET,
+//       callbackURL: "http://yourdormain:3000/auth/google/callback",
+//       passReqToCallback: true
+//     },
+//     googleLoginCallback
+//   )
+// );
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

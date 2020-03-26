@@ -7,7 +7,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 50px;
+    margin-top: 60px;
+    margin-bottom: 15px;
     .profile__username {
       font-size: 18px;
       margin-top: 15px;
@@ -15,10 +16,25 @@
   }
   .user-profile__btns {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    a:not(:last-child) {
-      margin-bottom: 20px;
+    margin-bottom: 50px;
+  }
+  .user-videos {
+    margin-top: 60px;
+    padding-left: 50px;
+    font-size: 20px;
+    font-family: "Bellota", cursive;
+    h5 {
+      margin-left: 20px;
+      color: $pink;
+      font-weight: 600;
+      display: inline-block;
     }
+  }
+  .home-videos {
+    margin-top: 5px;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    padding-top: 50px;
   }
 }

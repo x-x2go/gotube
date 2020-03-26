@@ -38,12 +38,16 @@ textarea,
   }
 }
 button {
-  border: none;
-  background-color: #3498db;
+  border-radius: 30px;
+  min-width: 160px;
+  width: fit-content;
+  background-color: $pink;
+  font-family: "Bellota", cursive;
   color: white;
+  font-size: 14px;
 }
 button.delete {
-  background-color: $dark-red;
+  background-color: $purple;
 }
 button,
 input[type="submit"] {

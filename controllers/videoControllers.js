@@ -162,7 +162,6 @@ export const deleteComment = async (req, res) => {
   const {
     params: { id }
   } = req;
-  console.log("comment ID" + id);
   try {
     const comment = await Comment.findById(id);
     // if (Comment.creator !== req.user.id) {
