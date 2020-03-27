@@ -47,7 +47,7 @@
   "scripts": {
     "dev:server": "nodemon --exec babel-node src/init.js --delay 2s --ignore '.scss' --ignore '.static",
     "dev:assets": "cd src && webpack --mode development -w",
-    "build:assets": "cd src && webpack --mode production --config /webpack-config.js",
+    "build:assets": "cd src && webpack --mode production --config ./webpack-config.js",
     "build:server": "babel src --out-dir build --ignore 'src/assets','src/static','src/webpack.config.js'",
     "copyAll": "cp -r src/static build &&cp -r src/views build",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
