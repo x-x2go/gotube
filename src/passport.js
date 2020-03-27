@@ -16,7 +16,7 @@ passport.use(
     {
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
-      callbackURL: `http://localhost:4000${routes.githubCallback}`
+      callbackURL: `https://calm-bastion-64393.herokuapp.com${routes.githubCallback}`
     },
     githubLoginCallback
   )
@@ -26,7 +26,7 @@ passport.use(
   new KakaoStrategy(
     {
       clientID: process.env.KK_ID,
-      callbackURL: `http://localhost:4000${routes.kakaoCallback}`
+      callbackURL: `https://calm-bastion-64393.herokuapp.com${routes.kakaoCallback}`
     },
     kakaoLoginCallback
   )
