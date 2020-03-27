@@ -121,9 +121,26 @@ export const googleLoginCallback = async (
   profile,
   done
 ) => {
-  const { _json } = profile;
-  console.log(profile);
-  console.log(_json);
+  const {
+    _json: { id, name, email, picture }
+  } = profile;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.githubId = id;
+      user.save();
+      return done(null, user);
+    }
+    const newUser = await User.create({
+      email,
+      name,
+      googleId: id,
+      avatarUrl: picture
+    });
+    return done(null, newUser);
+  } catch (error) {
+    return done(error);
+  }
 };
 export const postGoogleLogin = (req, res) => {
   res.redirect(routes.home);
