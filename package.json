@@ -49,9 +49,9 @@
     "dev:assets": "cd src && webpack --mode development -w",
     "build:assets": "cd src && webpack --mode production",
     "build:server": "babel src --out-dir build --ignore 'src/assets','src/static','src/webpack.config.js'",
-    "copyAll": "shx cp -r src/static build/static && shx cp -r src/views build/views && shx cp -r src/uploads build/uploads",
+    "copyAll": "cp -r src/static build/static &&cp -r src/views build/views &&cp -r src/uploads build/uploads",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
-    "prebuild": "shx rm -rf build",
+    "prebuild": "rm -rf build",
     "start": "node build/init.js"
   },
   "devDependencies": {
