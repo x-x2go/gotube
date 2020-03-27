@@ -112,6 +112,20 @@ export const postKakaoLogin = (req, res) => {
   res.redirect(routes.home);
 };
 
+export const googleLogin = passport.authenticate("google");
+export const googleLoginCallback = async (
+  accessToken,
+  refreshToken,
+  profile,
+  done
+) => {
+  const { _json } = profile;
+  console.log(_json);
+};
+export const postGoogleLogin = (req, res) => {
+  res.redirect(routes.home);
+};
+
 export const logout = (req, res) => {
   req.logout();
   res.redirect(routes.home);

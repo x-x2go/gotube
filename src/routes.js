@@ -27,6 +27,10 @@ const GITHUB_CALLBACK = "/auth/github/callback";
 const KAKAO = "/auth/kakao";
 const KAKAO_CALLBACK = "/auth/kakao/callback";
 
+// Google
+const GOOGLE = "/auth/google";
+const GOOGLE_CALLBACK = "/auth/google/callback";
+
 // API
 const API = "/api";
 const REGISTER_VIEW = "/:id/view";
@@ -72,6 +76,8 @@ const routes = {
   githubCallback: GITHUB_CALLBACK,
   kakao: KAKAO,
   kakaoCallback: KAKAO_CALLBACK,
+  google: GOOGLE,
+  googleCallback: GOOGLE_CALLBACK,
   me: ME,
   api: API,
   registerView: REGISTER_VIEW,
