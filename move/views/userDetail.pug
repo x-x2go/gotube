@@ -1,0 +1,34 @@
+extends layouts/main
+include mixins/videoBlock
+
+block content
+    .user-profile
+        .user-profile__header
+            img.u-avatar(src=user.avatarUrl)
+            h4.profile__username=user.name
+        if loggedUser&&user.id ===loggedUser.id
+            .user-profile__btns
+                a(href=`/users${routes.editProfile}`)
+                    button.waveBtn 🖍 Edit Profile
+                        span.wave
+                        span.wave
+                        span.wave
+                        span.wave
+                a(href=`/users${routes.changePassword}`)
+                    button.waveBtn 🔒 Change Password
+                        span.wave
+                        span.wave
+                        span.wave
+                        span.wave
+        .user-videos
+            h5 #{user.name} 
+            |'s videos
+            .home-videos
+                each item in user.videos
+                    +videoBlock({
+                        id: item.id,
+                        thumbnail: item.thumbnail,
+                        title: item.title,
+                        views: item.views,
+                        videoFile: item.fileUrl
+                    })

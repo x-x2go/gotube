@@ -1,0 +1,21 @@
+.search__header {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 8px;
+  h3 {
+    font-size: 26px;
+    font-weight: 600;
+    display: inline-block;
+    color: $pink;
+  }
+}
+
+.search__videos {
+  margin-top: 5px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  padding-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  grid-gap: 30px;
+}
