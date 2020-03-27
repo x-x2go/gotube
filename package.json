@@ -13,7 +13,6 @@
     "autoprefixer": "^9.7.4",
     "aws-sdk": "^2.646.0",
     "axios": "^0.19.2",
-    "babel": "^6.23.0",
     "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
     "cd": "^0.3.3",
@@ -47,15 +46,14 @@
   "scripts": {
     "dev:server": "nodemon --exec babel-node src/init.js --delay 2s --ignore '.scss' --ignore '.static",
     "dev:assets": "cd src && webpack --mode development -w",
-    "build:assets": "cd src && webpack --mode production --config ./webpack-config.js",
+    "build:assets": "cd src && webpack --mode production --config ./webpack.config.js",
     "build:server": "babel src --out-dir build --ignore 'src/assets','src/static','src/webpack.config.js'",
-    "copyAll": "cp -r src/static build &&cp -r src/views build",
+    "copyAll": "shx cp -r src/static build &&shx cp -r src/views build",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
-    "prebuild": "rm -rf build",
+    "prebuild": "shx rm -rf build",
     "start": "node build/init.js"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "cross-env": "^7.0.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
