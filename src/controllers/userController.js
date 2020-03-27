@@ -112,7 +112,9 @@ export const postKakaoLogin = (req, res) => {
   res.redirect(routes.home);
 };
 
-export const googleLogin = passport.authenticate("google");
+export const googleLogin = passport.authenticate("google", {
+  scope: ["profile"]
+});
 export const googleLoginCallback = async (
   accessToken,
   refreshToken,
