@@ -124,6 +124,7 @@ export const googleLoginCallback = async (
   const {
     _json: { id, name, email, picture }
   } = profile;
+  console.log(profile);
   try {
     const user = await User.findOne({ email });
     if (user) {
