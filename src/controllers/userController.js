@@ -123,6 +123,7 @@ export const googleLoginCallback = async (
 ) => {
   const { _json } = profile;
   console.log(profile);
+  console.log(_json);
 };
 export const postGoogleLogin = (req, res) => {
   res.redirect(routes.home);
