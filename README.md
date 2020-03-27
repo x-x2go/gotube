@@ -15,5 +15,8 @@ Cloning Youtube with VanillaJS and NodeJS
 - [x] Upload
 - [x] Video Deail
 - [x] Edit video
+<<<<<<< HEAD
 
 ---
+=======
+>>>>>>> a597dac934bcea57383d953a10ce969908281dad

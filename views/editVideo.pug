@@ -1,0 +1,17 @@
+extends layouts/main
+
+block content
+    .form-container
+        form(action=routes.editVideo(video.id), method="post", enctype="multipart/form-data")
+            .fileUpload
+                label(for="thumbnail") Thumbnail
+                input(type="file", id="thumbnail", name="thumbnail" accept="image/*")
+            input(type="text", placeholder="Title", name="title", value=video.title)
+            textarea(name="description", placeholder="Description")=video.description
+            button.waveBtn(type="submit") Update Video
+                span.wave
+                span.wave
+                span.wave
+                span.wave
+        a.form-container__link.form-container__link--delete(href=routes.deleteVideo(video.id)) 
+            button.delete Delete Video
