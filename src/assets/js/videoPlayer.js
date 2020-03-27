@@ -51,8 +51,8 @@ function showCursor() {
 
 function exitFullScreen() {
   fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
-  fullScreenBtn.addEventListener("click", goFullScreen);
   videoPlayer.removeEventListener("mousemove", showCursor);
+  fullScreenBtn.addEventListener("click", goFullScreen);
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.webkitExitFullscreen) {
