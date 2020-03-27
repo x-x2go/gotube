@@ -13,12 +13,10 @@
     "autoprefixer": "^9.7.4",
     "aws-sdk": "^2.646.0",
     "axios": "^0.19.2",
+    "babel": "^6.23.0",
     "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
     "cd": "^0.3.3",
-    "axios": "^0.19.2",
-    "babel-loader": "^8.0.6",
-    "body-parser": "^1.19.0",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.4",
     "css-loader": "^3.4.2",
@@ -43,7 +41,6 @@
     "rd": "^2.0.1",
     "sass-loader": "^8.0.2",
     "shx": "^0.3.2",
-    "sass-loader": "^8.0.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
@@ -56,12 +53,6 @@
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
     "prebuild": "shx rm -rf build",
     "start": "node build/init.js"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "dev:server": "nodemon --exec babel-node init.js --delay 2s --ignore '.scss' --ignore '.static",
-    "dev:assets": "webpack --mode development -w",
-    "build:assets": "webpack --mode production"
   },
   "devDependencies": {
     "cross-env": "^7.0.0",
