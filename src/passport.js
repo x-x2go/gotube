@@ -1,7 +1,7 @@
 import passport from "passport";
 import GithubStrategy from "passport-github";
 import KakaoStrategy from "passport-kakao";
-import GoogleStrategy from "passport-google-oauth2";
+import GoogleStrategy from "passport-google-oauth20";
 import User from "./models/User";
 import {
   githubLoginCallback,
@@ -38,8 +38,7 @@ passport.use(
     {
       clientID: process.env.GG_ID,
       clientSecret: process.env.GG_SECRET,
-      callbackURL: `https://calm-bastion-64393.herokuapp.com${routes.googleCallback}`,
-      passReqToCallback: true
+      callbackURL: `https://calm-bastion-64393.herokuapp.com${routes.googleCallback}`
     },
     googleLoginCallback
   )

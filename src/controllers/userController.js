@@ -113,7 +113,7 @@ export const postKakaoLogin = (req, res) => {
 };
 
 export const googleLogin = passport.authenticate("google", {
-  scope: ["profile"]
+  scope: ["profile", "email"]
 });
 export const googleLoginCallback = async (
   accessToken,
@@ -122,13 +122,12 @@ export const googleLoginCallback = async (
   done
 ) => {
   const {
-    _json: { id, name, email, picture }
+    _json: { sub: id, name, picture: avatarUrl, email }
   } = profile;
-  console.log(_json);
   try {
     const user = await User.findOne({ email });
     if (user) {
-      user.githubId = id;
+      user.googleId = id;
       user.save();
       return done(null, user);
     }
@@ -136,7 +135,7 @@ export const googleLoginCallback = async (
       email,
       name,
       googleId: id,
-      avatarUrl: picture
+      avatarUrl
     });
     return done(null, newUser);
   } catch (error) {
