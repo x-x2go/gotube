@@ -1,0 +1,44 @@
+.videoBlock {
+  .video_box {
+    margin-bottom: 5px;
+    max-width: 100%;
+    position: relative;
+    video {
+      max-width: 100%;
+      position: relative;
+    }
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+    }
+  }
+  #box {
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    width: 100%;
+    height: 99%;
+    z-index: 5;
+    h6 {
+      font-size: 0;
+    }
+  }
+
+  #box:hover {
+    background-color: rgba(44, 44, 44, 0.7);
+    h6 {
+      font-size: 16px;
+      position: absolute;
+      left: 40%;
+      top: 45%;
+      color: white;
+    }
+  }
+  .videoBlock__title {
+    font-family: "Roboto Slab", "Nanum Myeongjo", serif;
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+}
