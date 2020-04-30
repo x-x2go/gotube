@@ -11,6 +11,7 @@
 ### About
 * * *
 
+<<<<<<< HEAD
 ![home](https://user-images.githubusercontent.com/59858942/80672932-ebb86f00-8ae8-11ea-8c11-736cfe565f0a.jpg)
 ![search](https://user-images.githubusercontent.com/59858942/80673063-45b93480-8ae9-11ea-819f-ea1b19df03cd.jpg)
 **Main page** 
